@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             CrosswordTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Niki",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -42,6 +42,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     CrosswordTheme {
-        Greeting("Android")
+        Greeting("Niki")
     }
 }
