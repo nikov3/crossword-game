@@ -1,4 +1,4 @@
-package com.example.crossword.model;
+package com.example.crossword.domain.model;
 
 public class ClueModel {
 

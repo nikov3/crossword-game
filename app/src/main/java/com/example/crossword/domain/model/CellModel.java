@@ -1,15 +1,33 @@
-package com.example.crossword.model;
+package com.example.crossword.domain.model;
 
 public class CellModel {
-    private char letter;
-    private boolean isBlocked;
-    private boolean isRevealed;
 
-    public CellModel(char letter, boolean isBlocked) {
-        this.letter = letter;
-        this.isBlocked = isBlocked;
-        this.isRevealed = false;
+    private String type;
+    private int x;
+    private int y;
+    private String chr;
+    private int hwid;
+    private int vwid;
+    private String svc;
+
+    // ✅ Constructor you need
+    public CellModel(int x, int y, String chr, int hwid, int vwid, String svc) {
+        this.type = "cell";
+        this.x = x;
+        this.y = y;
+        this.chr = chr;
+        this.hwid = hwid;
+        this.vwid = vwid;
+        this.svc = svc;
     }
+
+    public String getType() { return type; }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public String getChr() { return chr; }
+    public int getHwid() { return hwid; }
+    public int getVwid() { return vwid; }
+    public String getSvc() { return svc; }
 }
 
 //{
