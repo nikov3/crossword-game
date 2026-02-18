@@ -5,13 +5,13 @@ public class CellModel {
     private String type;
     private int x;
     private int y;
-    private String chr;
+    private Character chr;
     private int hwid;
     private int vwid;
     private String svc;
 
     // ✅ Constructor you need
-    public CellModel(int x, int y, String chr, int hwid, int vwid, String svc) {
+    public CellModel(int x, int y, Character chr, int hwid, int vwid, String svc) {
         this.type = "cell";
         this.x = x;
         this.y = y;
@@ -24,7 +24,7 @@ public class CellModel {
     public String getType() { return type; }
     public int getX() { return x; }
     public int getY() { return y; }
-    public String getChr() { return chr; }
+    public Character getChr() { return chr; }
     public int getHwid() { return hwid; }
     public int getVwid() { return vwid; }
     public String getSvc() { return svc; }
