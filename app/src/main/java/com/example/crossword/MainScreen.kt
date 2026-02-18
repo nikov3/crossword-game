@@ -11,11 +11,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.crossword.R
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -23,15 +27,14 @@ fun MainScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Placeholder for the logo
-        Text(text = "Лого")
+        Text(text = stringResource(id = R.string.logo))
         Spacer(modifier = Modifier.height(32.dp))
-        Button(onClick = { /* TODO: Handle Today's Crossword click */ }) {
-            Text(text = "Днешната кръстословица")
+        Button(onClick = { navController.navigate("todays_crossword") }) {
+            Text(text = stringResource(id = R.string.todays_crossword))
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /* TODO: Handle All Crosswords click */ }) {
-            Text(text = "Всички кръстословици")
+        Button(onClick = { navController.navigate("game") }) {
+            Text(text = stringResource(id = R.string.all_crosswords))
         }
     }
 }
@@ -39,5 +42,5 @@ fun MainScreen() {
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
-    MainScreen()
+    MainScreen(navController = rememberNavController())
 }
