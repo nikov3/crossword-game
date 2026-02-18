@@ -57,7 +57,6 @@ public class CrosswordScraper {
 
     public CrosswordModel fetch(String url) throws IOException {
 
-        // 1️⃣ HTTP REQUEST
         Request request = new Request.Builder()
                 .url(url)
                 .addHeader("User-Agent", "Mozilla/5.0")
@@ -72,11 +71,9 @@ public class CrosswordScraper {
 
         String html = response.body().string();
 
-        // 2️⃣ PAGE TITLE
         Document document = Jsoup.parse(html);
         String pageTitle = document.selectFirst("h1").text();
 
-        // 3️⃣ EXTRACT addCrossword(...) BLOCK
         Pattern blockPattern = Pattern.compile("addCrossword\\((.*?)\\);", Pattern.DOTALL);
         Matcher blockMatcher = blockPattern.matcher(html);
 
@@ -97,7 +94,6 @@ public class CrosswordScraper {
         List<CellModel> cells = new ArrayList<>();
         List<WordModel> words = new ArrayList<>();
 
-        // 4️⃣ WIDTH + HEIGHT
         Pattern sizePattern = Pattern.compile(
                 "\\{type:'crossword'.*?width:(\\d+),height:(\\d+)",
                 Pattern.DOTALL
@@ -110,7 +106,6 @@ public class CrosswordScraper {
             height = Integer.parseInt(sizeMatcher.group(2));
         }
 
-        // 5️⃣ CELLS
         Pattern cellPattern = Pattern.compile(
                 "\\{type:'cell',x:(\\d+),y:(\\d+),chr:'(.*?)',hwid:(\\d+),vwid:(\\d+),svc:'(.*?)'\\}",
                 Pattern.DOTALL
@@ -127,10 +122,17 @@ public class CrosswordScraper {
             int vwid = Integer.parseInt(cellMatcher.group(5));
             String svc = cellMatcher.group(6);
 
-            cells.add(new CellModel(x, y, GetCharFromEncryptedResposeCode(chr), hwid, vwid, svc));
+            cells.add(
+                    new CellModel(
+                            x,
+                            y,
+                            GetCharFromEncryptedResponseCode(chr),
+                            hwid,
+                            vwid,
+                            svc
+                    ));
         }
 
-        // 6️⃣ WORDS
         Pattern wordPattern = Pattern.compile(
                 "\\{type:'word',id:(\\d+),clue:'(.*?)'\\}",
                 Pattern.DOTALL
@@ -159,7 +161,7 @@ public class CrosswordScraper {
     /// The response returns MD5 hashed "BGxx" instead of cyrilic letters.
     /// For example "А" is "cac5d60265a111045936e2bf9281c22c". This is MD5 hashed value of "BG01"
     /// For example "Б" is "cac5d60265a111045936e2bf9281c22c". This is MD5 hashed value of "BG02"
-    private Character GetCharFromEncryptedResposeCode(String encryptedChr){
+    private Character GetCharFromEncryptedResponseCode(String encryptedChr){
         return LETTERS_MAP.get(encryptedChr);
     }
 }
