@@ -160,7 +160,7 @@ public class CrosswordScraper {
     /// This method work with the LETTERS_MAP.
     /// The response returns MD5 hashed "BGxx" instead of cyrilic letters.
     /// For example "А" is "cac5d60265a111045936e2bf9281c22c". This is MD5 hashed value of "BG01"
-    /// For example "Б" is "cac5d60265a111045936e2bf9281c22c". This is MD5 hashed value of "BG02"
+    /// For example "Б" is "c22464e0e60fd5dedb9afa221b9117e2". This is MD5 hashed value of "BG02"
     private Character GetCharFromEncryptedResponseCode(String encryptedChr){
         return LETTERS_MAP.get(encryptedChr);
     }
