@@ -24,14 +24,14 @@ fun MainScreen() {
         verticalArrangement = Arrangement.Center
     ) {
         // Placeholder for the logo
-        Text(text = "Logo")
+        Text(text = "Лого")
         Spacer(modifier = Modifier.height(32.dp))
         Button(onClick = { /* TODO: Handle Today's Crossword click */ }) {
-            Text(text = "Today's Crossword")
+            Text(text = "Днешната кръстословица")
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { /* TODO: Handle All Crosswords click */ }) {
-            Text(text = "All Crosswords")
+            Text(text = "Всички кръстословици")
         }
     }
 }
