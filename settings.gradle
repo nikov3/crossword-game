@@ -24,3 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Crossword"
 include ':app'
+include ':feature:game'
+include ':feature:todays_crossword'

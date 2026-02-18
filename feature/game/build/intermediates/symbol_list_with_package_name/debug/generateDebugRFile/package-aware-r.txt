@@ -1,0 +1,2 @@
+com.example.crossword.game
+string game_screen_title

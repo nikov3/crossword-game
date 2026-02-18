@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Crossword</string>
+    <string name="app_name">Кръстословица</string>
+    <string name="logo">Лого</string>
+    <string name="todays_crossword">Днешната кръстословица</string>
+    <string name="all_crosswords">Всички кръстословици</string>
 </resources>
